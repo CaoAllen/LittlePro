@@ -1,0 +1,120 @@
+/* site.wxss */
+
+/*底部按钮*/
+
+.section {
+	padding: 15rpx;
+	color: #2e2e2e;
+	font-size: 30rpx;
+}
+
+scroll-view {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 40px;
+}
+
+.sitetype {
+  position: absolute;
+  z-index: 2;
+  background-color: blue;
+  color: white;
+  left: 15rpx;
+  font-size: 15px;
+  width: 15px;
+}
+
+.showImg {
+  height: 600rpx;
+  width: 100%;
+}
+
+.showImg swiper {
+  display: inline;
+}
+
+.showImg image {
+  width: 100%;
+  height: 100%;
+}
+
+.sitename {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.gray {
+  color: #c0c0c0;
+}
+
+.red {
+  color: red;
+}
+
+.point {
+  border-top:1rpx solid #eee;
+}
+
+.detailSection1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailSection1 view {
+  display: flex;
+  flex-direction: row;
+}
+
+.detailSection2 button {
+  font-size: 10px;
+}
+
+/*复选框*/
+
+.carts-footer icon {
+  margin-left: 20rpx;
+}
+
+/*全选字样*/
+
+.carts-footer text {
+  font-size: 30rpx;
+  margin-left: 8rpx;
+  line-height: 10rpx;
+}
+
+.carts-footer .resource {
+  font-size: 26rpx;
+  width: 15%;
+  color: black;
+  background-color: white;
+}
+
+.carts-footer .service {
+  font-size: 26rpx;
+  width: 10%;
+  color: black;
+  background-color: white;
+}
+
+.carts-footer .cart {
+  font-size: 26rpx;
+  width: 15%;
+  color: black;
+  background-color: white;
+}
+
+.carts-footer .addCart {
+  font-size: 36rpx;
+  width: 30%;
+  color: white;
+  background-color: #f60;
+}
+
+.carts-footer .orderImme {
+  font-size: 36rpx;
+  width: 30%;
+  color: white;
+  background-color: blue;
+}

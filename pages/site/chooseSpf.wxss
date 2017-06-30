@@ -1,0 +1,11 @@
+/* pages/site/chooseSpf.wxss */
+.picker{
+  padding: 19rpx 26rpx;
+  background-color: #FFFFFF;
+}
+
+.ok {
+  width: 100%;
+  background-color: blue;
+  color: white;
+}

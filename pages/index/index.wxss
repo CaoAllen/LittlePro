@@ -1,0 +1,210 @@
+.swiper-tab{
+  width: 100%; 
+  border-bottom: 2rpx solid #777777; 
+  text-align: center; 
+  line-height: 80rpx;
+}
+.swiper-tab-list{
+  font-size: 30rpx; 
+  display: inline-block; 
+  width: 50%; 
+  color: #777777; 
+}
+.on{
+  color: #da7c0c; 
+  border-bottom: 5rpx solid #da7c0c;
+}
+.swiper-box{ 
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+ }
+.swiper-box view{ 
+  text-align: center; 
+}
+
+.weui-selected-city{
+  color: red
+}
+
+.header {
+	display: -webkit-flex;
+	padding: 20rpx;
+	background: #fff;
+}
+
+.header .icon {
+	width: 40rpx;
+	height: 40rpx;
+	vertical-align: top;
+}
+
+.header .search {
+	-webkit-flex: 1;
+	color: #000;
+	font-size: 30rpx;
+	line-height: 40rpx;
+	padding: 10rpx;
+	border-radius: 10rpx;
+	background: #eee;
+}
+
+.header .search .icon {
+	float: left;
+	margin: 1rpx 5rpx 0 0;
+}
+
+.header button {
+	margin-left: 20rpx;
+	font-size: 30rpx;
+}
+
+.header input {
+	height: 30rpx;
+	min-height: 40rpx;
+}
+
+.result {
+	padding: 0;
+}
+
+.result .filters {
+	z-index: 1;
+	position: relative;
+	display: -webkit-flex;
+	border-top: 1rpx solid #efefef;
+	border-bottom: 1rpx solid #efefef;
+	background: #fff;
+}
+
+.result .filters .filter {
+	-webkit-flex: 1;
+	text-align: center;
+	color: #696969;
+	font-size: 30rpx;
+	line-height: 3;
+}
+
+.result .filters .filter .v {
+	display: none;
+}
+
+.result .filters .filter.active {
+	color: #000;
+	font-weight: bold;
+}
+
+.result .filters .filter.active .v {
+	display: inline-block;
+}
+
+.filters .multSort {
+  height: 0;
+  overflow: hidden;
+}
+
+.result scroll-view {
+	position: absolute;
+	top: 200rpx;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #fff;
+}
+
+.result .shop {
+	padding: 10rpx 0;
+	border-bottom: 1rpx solid #efefef;
+}
+
+.result .shop image {
+	width: 30%;
+	height: 190rpx;
+}
+
+.loading {
+	font-size: 32rpx;
+	text-align: center;
+	line-height: 2;
+	margin-bottom: 20rpx;
+}
+
+.item {
+  display: flex;
+  padding: 20rpx 40rpx;
+  border-bottom: 1rpx solid #eee;
+  cursor: pointer;
+  text-align: left
+}
+
+.item .poster {
+  width: 128rpx;
+  height: 128rpx;
+  margin-right: 20rpx;
+}
+
+.item .meta {
+  flex: 1;
+}
+
+.item .meta .title,
+.item .meta .sub-title {
+  display: block;
+  margin-bottom: 15rpx;
+}
+
+.item .meta .title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.item .meta .location {
+  font-size: 22rpx;
+  color: #c0c0c0;
+}
+
+.item .meta .flowrate {
+  font-size: 26rpx;
+  color: #999;
+  float: left;
+  width:50%;
+}
+
+.item .meta .score {
+  font-size: 26rpx;
+  color:orangered;
+  text-align: right;  
+  float: left;
+  width:50%;
+}
+
+.item .meta .price {
+  font-size: 28rpx;
+  color: red;
+  float: left;
+  width:50%;
+}
+
+.item .meta .activity {
+  font-size: 26rpx;
+}
+
+.item .meta .time {
+  font-size: 26rpx;
+  color: red;
+}
+
+.item .meta .payers {
+  font-size: 26rpx;
+  color: #c0c0c0;
+  text-align: right;
+  float: left;
+  width:50%;
+}
+
+.item .rating {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #f74c31;
+}

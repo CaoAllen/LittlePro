@@ -1,0 +1,91 @@
+<!--site.wxml-->
+<scroll-view class="" scroll-y>
+  <text class="sitetype">写字楼</text>
+  <view class="showImg">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item.img}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="wa-grid section">
+    <view class="wa-grid-99 sitename">上海凯迪克大厦</view>
+    <view class="wa-grid-33 gray">付款人数：39</view>
+    <view class="wa-grid-33 gray">累计评价：13</view>
+    <view class="wa-grid-33 red">4星</view>
+    <view class="wa-grid-50 red">¥1500</view>
+    <view class="wa-grid-50">查看价格</view>
+  </view>
+  <view class="wa-grid address section">
+    <icon class="icon-small" type="info_circle" size="23"></icon>
+    <text>上海市松江区文翔路2800号</text>
+  </view>
+  <view class="wa-grid tips section">
+    <view class="wa-grid-50">
+      <icon class="icon-small" type="info_circle" size="23"></icon>
+      <text>承诺退差价</text>
+    </view>
+    <view class="wa-grid-50">
+      <icon class="icon-small" type="info_circle" size="23"></icon>
+      <text>纠错奖励</text>
+    </view>
+    <view class="wa-grid-99 point">预订可获得1500积分</view>
+  </view>
+  <view class="chooseSpf section">
+    <navigator class="button orderImme" url="/pages/site/chooseSpf">选择 规格</navigator>
+  </view>
+  <view class="wa-grid detailSection2">
+    <view class="wa-grid-99 section">
+      <button class="mini-btn" type="primary" size="mini">发票8%</button>
+      <button class="mini-btn" disabled="true" size="mini">供电</button>
+      <button class="mini-btn" disabled="true" size="mini">提供座椅</button>
+      <button class="mini-btn" type="primary" disabled="true" size="mini">物料过夜</button>
+      <button class="mini-btn" disabled="true" size="mini">能发宣传页</button>
+    </view>
+    <view class="section">
+      <view class="classname">
+        <text class="detailTitle">社区信息：</text>
+      </view>
+      <view class="classname">
+        <text>年份：2010 物业费： 24</text>
+        <text>房价：- 户 数： -</text>
+        <text>入住率：-</text>
+      </view>
+    </view>
+    <view class="section">
+      <view class="classname">
+        <text class="detailTitle">摆摊时间：08:00--17:00 人流量：3000</text>
+      </view>
+    </view>
+  </view>
+  <view class="comments section">
+    <view class="commentsHead">
+      <text>评论（13）</text>
+      <text>查看全部</text>
+    </view>
+    <!--
+    <view class="commentsList" wx:for="{{comments}}" wx:key="id">-->
+    <view class="commentsList">
+      <view class="wa-grid">
+        <view class="wa-grid-50">神秘人士</view>
+        <view class="wa-grid-50">5星</view>
+        <view class="wa-grid-50">2017-02-25</view>
+        <view class="wa-grid-50">现场人流量：200</view>
+        <view class="wa-grid-99">效果还可以效果还可以效果还可以效果还可以效果还可以效果还可以效果还可以效果还可以效果还可以效果还可以</view>
+        <view class="wa-grid-99">
+          <button class="mini-btn" type="primary" size="mini">摆摊位置好</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="carts-footer">
+  <view class="button resource">社区资源</view>
+  <view class="button service">客服</view>
+  <view class="button cart">购物车</view>
+  <view class="button addCart" bindtap="addCart">加入购物车</view>
+  <navigator class="button orderImme" url="/pages/order/order?id={{id}}">立即下单
+  </navigator>
+</view>

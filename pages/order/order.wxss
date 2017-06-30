@@ -1,0 +1,16 @@
+/* order.wxss */
+
+.carts-footer .total {
+  width: 70%;
+  text-align: right;
+  background:white;
+}
+
+.carts-footer .totalamount {
+  color: red;
+}
+
+.carts-footer .submitorder {
+  width: 30%;
+  background: blue;
+}

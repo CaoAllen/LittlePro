@@ -1,0 +1,117 @@
+<!--index.wxml-->
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">当前选择城市</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="weui-input weui-selected-city">{{array[index]}}</view>
+      </picker>
+    </view>
+  </view>
+</view>
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">场地</view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">活动</view>
+</view>
+<swiper current="{{currentTab}}" class="" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+  <swiper-item>
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="请输入小区/楼宇关键字" />
+        </view>
+      </view>
+    </view>
+    <view id="siteResult" class="result" hidden="{{!showResult}}">
+      <view class="filters">
+        <view class="filter {{sortName=='multSort'?'active':''}}" data-id="multSort" bindtap="tapFilter">综合排序
+         <view data-id="multSort" class="{{sortName=='multSort'?'':'multSort'}}" bindtap="chooseSort" data-id="publishTimeAsc">发布时间</view>
+        </view>
+        <view class="filter {{sortName=='salesVolumn'?'active':''}}" data-id="salesVolumn" bindtap="tapFilter">销量
+          <text class="v" wx:if="{{sortDirection=='ASC'}}">↑</text>
+          <text class="v" wx:if="{{sortDirection=='DESC'}}">↓</text>
+        </view>
+        <view class=" filter {{sortName=='price'? 'active': ''}}" data-id="price" bindtap="tapFilter">价格
+          <text class="v" wx:if="{{sortDirection=='ASC'}}">↑</text>
+          <text class="v" wx:if="{{sortDirection=='DESC'}}">↓</text>
+        </view>
+        <navigator class="filter" url="/pages/search/search">
+          <view data-id="search" bindtap="tapFilter">筛选
+          </view>
+        </navigator>
+      </view>
+      <scroll-view scroll-y="true">
+        <view class="shop" wx:for="{{sites}}" wx:key="id">
+          <navigator url="/pages/site/site?id={{item.id}}">
+            <view class="item">
+              <image class="poster" src="{{imgUrl}}{{item.path}}"></image>
+              <view class="meta">
+                <text class="title">{{item.name}}</text>
+                <text class="location">({{item.addressDetail}})</text>
+                <view>
+                  <text class="flowrate">人流量：{{item.flowrate}}</text>
+                  <text class="score">{{item.score}}分</text>
+                  <icon type="String" />
+                </view>
+                <view>
+                  <text class="price">价格：{{currency}}{{item.price}}</text>
+                  <text class="payers">成交人数：{{item.salesVolumn}}</text>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+        <view class="loading">努力加载中…</view>
+      </scroll-view>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" />
+        </view>
+      </view>
+    </view>
+    <view id="activityResult" class="result" hidden="{{!showResult}}">
+      <view class="filters">
+        <view class="filter {{filterId==1? 'active': ''}}" data-id="1" bindtap="tapFilter">综合排序
+          <text class="v">↓</text>
+        </view>
+        <view class="filter {{filterId==2? 'active': ''}}" data-id="2" bindtap="tapFilter">销量
+          <text class="v">↓</text>
+        </view>
+        <view class="filter {{filterId==3? 'active': ''}}" data-id="3" bindtap="tapFilter">价格
+          <text class="v">↓</text>
+        </view>
+      </view>
+      <scroll-view scroll-y="true">
+        <view class="shop" wx:for="{{shops}}" wx:key="id">
+          <navigator url="/pages/site/site?id={{item.id}}">
+            <view class="item">
+              <image class="poster" src="{{item.img}}"></image>
+              <view class="meta">
+                <text class="title">{{item.name}}</text>
+                <text class="location">({{item.location}})</text>
+                <view>
+                  <text class="activity">活动时间:</text>
+                  <text class="time">2017.06.10-2017.06.11</text>
+                  <icon type="String" />
+                </view>
+                <view>
+                  <text class="price">价格：{{currency}}{{item.price}}</text>
+                  <text class="score">{{item.score}}分</text>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+        <view class="loading">努力加载中…</view>
+      </scroll-view>
+    </view>
+  </swiper-item>
+</swiper>

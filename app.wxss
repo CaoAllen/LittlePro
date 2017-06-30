@@ -1,0 +1,57 @@
+/**app.wxss**/
+@import 'assets/styles/weui.wxss';
+@import 'assets/styles/prompt.wxss';
+@import 'assets/styles/skyvow.wxss';
+@import 'assets/styles/wa-ui.wxss';
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /*padding: 200rpx 0;*/
+  box-sizing: border-box;
+}
+
+.page-body {
+  width: 100%;
+  flex-grow: 1;
+  overflow-x: hidden;
+}
+
+.page-section {
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+
+.page-section-spacing {
+  box-sizing: border-box;
+  padding: 0 80rpx;
+}
+
+.carts-footer {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #eee;
+}
+
+.carts-footer .button {
+  line-height: 80rpx;
+  text-align: center;
+  height: 80rpx;
+  border-radius: 0;
+  border: 0;
+}
+
+.section {
+	background: #fff;
+	border-bottom: 1rpx solid #dedede;
+	margin-bottom: 15rpx;
+	padding: 20rpx;
+}
