@@ -24,7 +24,6 @@
 }
 
 .navigator:before {
-  content: " ";
   position: absolute;
   left: 30rpx;
   top: 0;

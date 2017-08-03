@@ -24,6 +24,8 @@ var config = {
 
   getSitesUrl: `${host}/getSites`,
 
+  getSiteUrl: `${host}/site/get`,
+
   imgUrl: `http://localhost:8081/bsImg/`
 
 };

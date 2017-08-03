@@ -42,6 +42,7 @@ scroll-view {
 .sitename {
   font-weight: bold;
   font-size: 18px;
+  padding: 5rpx;
 }
 
 .gray {
@@ -54,6 +55,19 @@ scroll-view {
 
 .point {
   border-top:1rpx solid #eee;
+}
+
+.header-section .wa-row{
+  padding: 0;
+}
+
+.price-header view{
+  background-color: #BFEFFF;
+  text-align:center;
+}
+
+.price-table {
+  text-align:center;
 }
 
 .detailSection1 {
@@ -84,23 +98,16 @@ scroll-view {
   line-height: 10rpx;
 }
 
-.carts-footer .resource {
-  font-size: 26rpx;
-  width: 15%;
-  color: black;
-  background-color: white;
-}
-
 .carts-footer .service {
   font-size: 26rpx;
-  width: 10%;
+  width: 20%;
   color: black;
   background-color: white;
 }
 
 .carts-footer .cart {
   font-size: 26rpx;
-  width: 15%;
+  width: 20%;
   color: black;
   background-color: white;
 }
@@ -116,5 +123,5 @@ scroll-view {
   font-size: 36rpx;
   width: 30%;
   color: white;
-  background-color: blue;
+  background-color: #f44;
 }

@@ -76,41 +76,33 @@ Page({
         id: 1,
         img: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/shops/logo_1.jpg',
         name: '上海凯迪克大厦',
-        location: '江宁路212号',
-        flowrate: 3000,
-        price: 1500,
-        payers: 25,
-        score: 5
+        time: '2017.07.12',
+        specifications: '2*3 | 天（周末）',
+        price: 1500
       },
       {
         id: 2,
         img: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/shops/logo_2.jpg',
         name: '龙阳广场',
-        location: '龙阳路2000号',
-        flowrate: 600,
-        price: 600,
-        payers: 5,
-        score: 4
+        time: '2017.07.12',
+        specifications: '2*3 | 天（周末）',
+        price: 600
       },
       {
         id: 3,
         img: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/shops/logo_3.jpg',
         name: '国力大厦',
-        location: '北京西路1465号',
-        flowrate: 500,
-        price: 2000,
-        payers: 11,
-        score: 4
+        time: '2017.07.12',
+        specifications: '2*3 | 天（周末）',
+        price: 2000
       },
       {
         id: 4,
         img: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/shops/logo_4.jpg',
         name: '东方国际大厦',
-        location: '娄山关路85号',
-        flowrate: 2000,
-        price: 2500,
-        payers: 2,
-        score: 3
+        time: '2017.07.12',
+        specifications: '2*3 | 天（周末）',
+        price: 2500
       }
     ]
     return orders;

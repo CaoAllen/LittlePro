@@ -1,9 +1,12 @@
-<view class="wa-grid">
+<view class="wa-grid zan-panel">
   <view class="wa-grid-50">姓名：你猜</view>
   <view class="wa-grid-50">18888888888</view>
-  <view class="wa-grid-99">地址：北京市东城区西街</view>
+  <view class="wa-grid-99 zan-cell zan-cell--access">
+    <view class="zan-cell__bd">地址：北京市东城区西街</view>
+    <view class="zan-cell__ft"></view>
+  </view>
 </view>
-<view class="wa-row">
+<view class="wa-row zan-panel">
   <view class="wa-col-80">
     <view>需要发票：税费 120</view>
     <view>因多数场地不支持开发票，由大公集代开</view>
@@ -12,28 +15,28 @@
     <switch type="switch" bindchange="isNeedReceipt" />
   </view>
 </view>
-<view class="otherneed">
+<view class="otherneed zan-panel">
   <view class="classname">其他需求</view>
-  <view class="classname">需要额外付费,订单成功后，工作人员会跟您联系</view>
-  <view class="wa-row">
+  <view class="zan-cell">需要额外付费,订单成功后，工作人员会跟您联系</view>
+  <view class="wa-row zan-cell">
     <view class="wa-col-80">需要布置</view>
     <view class="wa-col-20">
       <switch type="switch" bindchange="isNeedReceipt" />
     </view>
   </view>
-  <view class="wa-row">
+  <view class="wa-row zan-cell">
     <view class="wa-col-80">需要运输</view>
     <view class="wa-col-20">
       <switch type="switch" bindchange="isNeedReceipt" />
     </view>
   </view>
-  <view class="wa-row">
+  <view class="wa-row zan-cell">
     <view class="wa-col-80">需要兼职</view>
     <view class="wa-col-20">
       <switch type="switch" bindchange="isNeedReceipt" />
     </view>
   </view>
-  <view class="wa-row points">
+  <view class="wa-row zan-cell">
     <view class="wa-col-80">积分
       <text>积分使用条件不足，无法使用</text>
     </view>
@@ -41,30 +44,37 @@
       <switch type="switch" bindchange="isNeedReceipt" />
     </view>
   </view>
-  <view class="orderDetail" wx:for="{{orders}}" wx:key="id">
-    <view class="item">
-      <image class="poster" src="{{item.img}}"></image>
-      <view class="meta">
-        <text class="title">{{item.name}}</text>
-        <text class="location">({{item.location}})</text>
-        <view>
-          <text class="activity">活动时间:</text>
-          <text class="time">2017.06.10-2017.06.11</text>
-          <icon type="String" />
+</view>
+<view class=" zan-panel" wx:for="{{orders}}" wx:key="id">
+  <view class="zan-card">
+    <view class="zan-card__thumb">
+      <image class="zan-card__img" src="{{item.img}}" mode="aspectFit"></image>
+    </view>
+    <view class="zan-card__detail">
+      <view class="zan-card__detail-row">
+        <view class="zan-card__right-col">价格：{{currency}}{{item.price}}</view>
+        <view class="zan-card__left-col zan-ellipsis--l2">
+          {{item.name}}
         </view>
-        <view>
-          <text class="price">价格：{{currency}}{{item.price}}</text>
-          <text class="score">{{item.score}}分</text>
+      </view>
+
+      <view class="zan-card__detail-row zan-c-gray-darker">
+        <view class="zan-card__right-col">x1</view>
+        <view class="zan-card__left-col">
+          规格：{{item.specifications}}
         </view>
+      </view>
+
+      <view class="zan-card__detail-row zan-c-gray-darker">
+        <view class="zan-card__left-col zan-c-red">时间：{{item.time}}</view>
       </view>
     </view>
   </view>
-</view>
-
+</view>>
 <view class="carts-footer">
   <view class="button total">
     <text class="totaltitle">实付款：</text>
     <text class="totalamount">¥15000000</text>
   </view>
-  <view class="button submitorder" bindtap="submitOrder">提交订单</view>
+  <view class="button submitorder" bindtap="submitOrder" loading="{{loading}}">提交订单</view>
 </view>

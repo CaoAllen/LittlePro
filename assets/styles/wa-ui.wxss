@@ -381,6 +381,7 @@ page .wa-dark {
 .wa-grid{
   width:100%;
   overflow: hidden;
+  padding: 5px;
 }
 .wa-grid-33{
   float: left;

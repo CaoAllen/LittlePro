@@ -5,35 +5,30 @@
         <image src="../../images/icon_26.png" mode="aspectFit"></image>
         <text>个人信息(未登录)</text>
       </view>
-      <view class="navigator-arrow"></view>
     </navigator>
     <navigator class="navigator my-item" url="../myconferencelist/myconferencelist">
       <view class="navigator-text">
         <image src="../../images/icon_24.png" mode="aspectFit"></image>
         <text>订单管理</text>
       </view>
-      <view class="navigator-arrow"></view>
     </navigator>
     <navigator class="navigator my-item" url="../myconferencelist/myconferencelist">
       <view class="navigator-text">
         <image src="../../images/icon_28.png" mode="aspectFit"></image>
         <text>联系人管理</text>
       </view>
-      <view class="navigator-arrow"></view>
     </navigator>
     <navigator class="navigator my-item" url="../myconferencelist/myconferencelist">
       <view class="navigator-text">
         <image src="../../images/icon_30.png" mode="aspectFit"></image>
         <text>票据管理</text>
       </view>
-      <view class="navigator-arrow"></view>
     </navigator>
     <navigator class="navigator my-item" url="../myconferencelist/myconferencelist">
       <view class="navigator-text">
         <image src="../../images/icon_32.png" mode="aspectFit"></image>
         <text>开票内容</text>
       </view>
-      <view class="navigator-arrow"></view>
     </navigator>
   </view>
 </view>

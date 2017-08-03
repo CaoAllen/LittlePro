@@ -8,7 +8,7 @@
   <!--header-->
   <view class="baoyou"></view>
   <!--list item-->
-  <block wx:for="{{cart}}">
+  <block wx:for="{{cart}}" wx:key="id">
     <view class="goods">
       <!--左侧图片-->
       <view>

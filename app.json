@@ -26,7 +26,7 @@
       {
         "pagePath": "pages/cart/cart",
         "text": "购物车",
-        "iconPath": "images/gouwuche.png",
+        "iconPath": "images/iconfont-cart.png",
         "selectedIconPath": "images/gouwuchefill.png"
       },
       {
