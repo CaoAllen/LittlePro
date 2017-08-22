@@ -1,0 +1,38 @@
+<import src="/template/tab/index.wxml" />
+
+<view class="mycontainer">
+
+  <view style="">
+    <template is="zan-tab" data="{{tab: tab, componentId: 'tab'}}"></template>
+  </view>
+  <view class="zan-panel" wx:for="{{orders}}" wx:key="id">
+    <view class="zan-card">
+      <view class="zan-card__thumb">
+        <image class="zan-card__img" src="{{item.imgUrl}}" mode="aspectFit"></image>
+      </view>
+      <view class="zan-card__detail">
+        <view class="zan-card__detail-row">
+          <view class="zan-card__right-col">价格：¥{{item.price}}</view>
+          <view class="zan-card__left-col zan-ellipsis--l2">
+            {{item.name}}
+          </view>
+        </view>
+
+        <view class="zan-card__detail-row zan-c-gray-darker">
+          <view class="zan-card__right-col">x1</view>
+          <view class="zan-card__left-col">
+            规格： {{item.specf.stallSize + ' | ' + item.specf.timeUnit}}
+          </view>
+        </view>
+
+        <view class="zan-card__detail-row zan-c-gray-darker">
+          <view class="zan-card__left-col zan-c-red">时间：{{item.specf.date}}</view>
+        </view>
+
+        <view class="zan-card__detail-row zan-c-gray-darker">
+          <view class="zan-card__right-col zan-c-green">交易完成</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

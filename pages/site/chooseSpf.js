@@ -1,31 +1,52 @@
+var util = require('../../utils/util.js');
+
 Page({
   data: {
-    array: ['中国', '美国', '巴西', '日本'],
-    index: 0,
-    date: '2016-09-01',
-    time: '12:01'
+    stallSizeArray: [],
+    stallSizeIndex: 0,
+    timeUnitArray: [],
+    timeUnitIndex: 0,
+    startDate: '',
+    endDate: '',
+    date: '',
   },
-  bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+  onLoad: function (options) {
+    console.dir(options);
+    var self = this;
+    var currentDate = new Date;
+    var endDate = new Date;
+    endDate.setFullYear(endDate.getFullYear() + 2);
+    var date = new Date;
+    date.setDate(date.getDate() + 1);
+    self.setData({
+      id:options.id,
+      stallSizeArray: ['3*5'],
+      timeUnitArray: ['天'],
+      startDate: util.formatDate(currentDate, '-'),
+      endDate: util.formatDate(endDate, '-'),
+      date: util.formatDate(date,'-')
+    });
+  },
+  bindStallSizeChange: function (e) {
     this.setData({
-      index: e.detail.value
-    })
+      stallSizeIndex: e.detail.value
+    });
+  },
+  bindTimeUnitChange: function (e) {
+    this.setData({
+      timeUnitIndex: e.detail.value
+    });
   },
   bindDateChange: function (e) {
     this.setData({
       date: e.detail.value
     })
   },
-  bindTimeChange: function (e) {
-    this.setData({
-      time: e.detail.value
-    })
-  },
   clickOk: function () {
-    if (true) {
-      wx.navigateTo({
-        url: 'site'
-      })
-    }
+    var d = this.data;
+    wx.redirectTo({
+      url: 'site?id=' + d.id + '&stallSize=' + d.stallSizeArray[d.stallSizeIndex] + 
+      '&timeUnit=' + d.timeUnitArray[d.timeUnitIndex] + "&date=" + d.date
+    })
   }
 })

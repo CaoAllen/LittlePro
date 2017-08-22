@@ -45,6 +45,11 @@ scroll-view {
   padding: 5rpx;
 }
 
+.detailTitle {
+  font-weight: bold;
+  font-size: 14px;
+}
+
 .gray {
   color: #c0c0c0;
 }

@@ -23,9 +23,11 @@
             <image id="img{{index}}" src="/images/del2.png" bindtap="delGoods" />
           </view>
         </view>
-        <!--价钱和购物加减的父盒子-->
+        <view class="detail">规格: {{item.specf.stallSize + ' | ' + item.specf.timeUnit}}</view>
+        <view class="detail">时间: {{item.specf.date}}</view>
         <view class="good-price">
-          <text class="price">￥{{item.price}}</text>
+          <view class="price">￥{{item.price}}</view>
+          <view class="number">x1</view>
         </view>
       </view>
     </view>
@@ -35,6 +37,6 @@
     <view class="total_text">合计：
       <text>￥{{total}}</text>
     </view>
-    <button class="total_js" size="mini">去结算({{goodsCount}})</button>
+    <button class="total_js" size="mini" bindtap="gotoOrder">去结算({{goodsCount}})</button>
   </view>
 </view>

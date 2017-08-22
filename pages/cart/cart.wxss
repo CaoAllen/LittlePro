@@ -37,6 +37,11 @@ page {
   border: 1px solid #ddd;
 }
 
+.goods .good-name{
+  font-weight: bold;
+  font-size: 15px;
+}
+
 .goods .good-cont {
   display: flex;
   flex: 1;
@@ -55,8 +60,18 @@ page {
 
 .goods .good-cont .good-price {
   display: flex;
-  flex-direction: column;
-  flex: 3;
+  flex: 2;
+  justify-content: space-between;
+}
+
+.goods .detail{
+  margin-left: 5rpx;
+  font-size: 12px;
+}
+
+
+.goods .number{
+  float: right
 }
 
 .goods .good-cont .good-price .price {

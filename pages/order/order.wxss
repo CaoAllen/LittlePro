@@ -4,6 +4,7 @@
   width: 70%;
   text-align: right;
   background:white;
+  margin-right:15px;
 }
 
 .carts-footer .totalamount {
@@ -12,5 +13,9 @@
 
 .carts-footer .submitorder {
   width: 30%;
-  background: blue;
+  background: #3385ff;
+}
+
+.chooseContacts .zan-cell{
+  padding: 0;
 }

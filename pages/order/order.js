@@ -1,5 +1,7 @@
 const paymentUrl = require('../../config').paymentUrl
-
+const paymentFinishUrl = require('../../config').paymentFinishUrl
+const getSiteUrl = require('../../config').getSiteUrl
+const imgUrl = require('../../config').imgUrl
 var app = getApp()
 
 // order.js
@@ -9,125 +11,124 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orders: []
+    orders: [],
+    orderInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      orders: this.getOrders()
+    var self = this;
+    if (options.id > 0) {
+      //从后端重新请求场地信息，以免场地已失效
+      wx.request({
+        url: getSiteUrl,
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          'siteId': options.id
+        },
+        success: function (res) {
+          console.log('response is:', res);
+          if (res.data == '' || res.data == undefined) {
+            self.setData({ invalid: true });
+            self.showError();
+          } else {
+            var orders = [];
+            orders.push({
+              cartId: 0,
+              siteId: options.id,
+              imgUrl: imgUrl + res.data.pictures[0].path,
+              price: res.data.prices[0].amount,
+              name: res.data.site.name,
+              specf: {
+                stallSize: options.stallSize,
+                timeUnit: options.timeUnit,
+                date: options.date
+              },
+              count: 1
+            });
+            self.setData({
+              orders: orders,
+              total: orders[0].price
+            });
+          }
+        },
+        fail: function (res) {
+          console.log('response ies:', res);
+          self.showError();
+        }
+      })
+    } else {
+      var arr = wx.getStorageSync('cart') || [];
+      this.setData({
+        orders: arr,
+        total: options.total > 0 ? options.total : 0
+      });
+    }
+  },
+  showError: function (msg) {
+    wx.showModal({
+      title: '警告',
+      content: msg || '出现错误或者场地已失效，请重新下单！',
+      showCancel: false,
+      confirmText: "确定"
     });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  getOrders: function () {
-    var orders = [
-      {
-        id: 1,
-        img: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/shops/logo_1.jpg',
-        name: '上海凯迪克大厦',
-        time: '2017.07.12',
-        specifications: '2*3 | 天（周末）',
-        price: 1500
-      },
-      {
-        id: 2,
-        img: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/shops/logo_2.jpg',
-        name: '龙阳广场',
-        time: '2017.07.12',
-        specifications: '2*3 | 天（周末）',
-        price: 600
-      },
-      {
-        id: 3,
-        img: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/shops/logo_3.jpg',
-        name: '国力大厦',
-        time: '2017.07.12',
-        specifications: '2*3 | 天（周末）',
-        price: 2000
-      },
-      {
-        id: 4,
-        img: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/shops/logo_4.jpg',
-        name: '东方国际大厦',
-        time: '2017.07.12',
-        specifications: '2*3 | 天（周末）',
-        price: 2500
-      }
-    ]
-    return orders;
-  },
-
-  isNeedReceipt: function (e) {
+  isNeedInvoice: function (e) {
     console.log(e.detail.value)
+    var orderInfo = this.data.orderInfo;
+    orderInfo.needInvoice = e.detail.value;
+    this.setData({ orderInfo: orderInfo });
   },
-
+  isNeedArrange: function (e) {
+    var orderInfo = this.data.orderInfo;
+    orderInfo.needArrange = e.detail.value;
+    this.setData({ orderInfo: orderInfo });
+  },
+  isNeedTransport: function (e) {
+    var orderInfo = this.data.orderInfo;
+    orderInfo.needTransport = e.detail.value;
+    this.setData({ orderInfo: orderInfo });
+  },
+  isNeedJianzhi: function (e) {
+    var orderInfo = this.data.orderInfo;
+    orderInfo.needJianzhi = e.detail.value;
+    this.setData({ orderInfo: orderInfo });
+  },
+  isNeedPoint: function (e) {
+    var orderInfo = this.data.orderInfo;
+    if (e.detail.value == true) {
+      //TODO load point
+      orderInfo.point = 100;
+    } else {
+      orderInfo.point = 0;
+    }
+    this.setData({ orderInfo: orderInfo });
+  },
   submitOrder: function () {
-    var self = this
-    wx.showModal({
-      title: '提示',
-      content: '确认提交订单吗？',
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          self.requestPayment()
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+    var self = this;
+    if (!self.data.orders instanceof Array || self.data.orders.length == 0 || self.data.invalid) {
+      self.showError('出现错误，请重新下单！ ');
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '确认提交订单吗？',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            self.requestPayment()
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
         }
-      }
-    })
+      });
+    }
   },
-  requestPayment: function(){
+  requestPayment: function () {
     var self = this
 
     self.setData({
@@ -140,26 +141,53 @@ Page({
       if (!err) {
         wx.request({
           url: paymentUrl,
-          method: 'POST', 
+          method: 'POST',
           header: {
             'content-type': 'application/x-www-form-urlencoded'
           },
           data: {
             openId: openid,
-            totalFee: '1'
+            totalFee: '1',//TODO use real amount instead,now use 1 for test
+            orders: JSON.stringify(self.data.orders),
+            orderInfo: JSON.stringify(self.data.orderInfo)
           },
           success: function (res) {
             console.log('unified order success, response is:', res)
             var payargs = res.data.payargs;
-            if(payargs){
+            if (payargs) {
               wx.requestPayment({
                 timeStamp: payargs.timeStamp,
                 nonceStr: payargs.nonceStr,
                 package: payargs.package,
                 signType: payargs.signType,
-                paySign: payargs.paySign
+                paySign: payargs.paySign,
+                'success': function (res) {
+                  wx.request({
+                    url: paymentFinishUrl,
+                    method: 'POST',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    data: {
+                      orderNo: payargs.orderNo
+                    },
+                    success: function (res) {
+                      wx.showToast({
+                        title: "支付完成！"
+                      });
+                    }
+                  });
+                },
+                'fail': function (res) {
+                  wx.showModal({
+                    title: "提示",
+                    content: "支付出现错误！",
+                    showCancel: false,
+                    confirmText: "确定"
+                  })
+                }
               })
-            }else{
+            } else {
               wx.showModal({
                 title: "提示",
                 content: "支付出现错误！",

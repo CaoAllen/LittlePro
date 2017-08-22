@@ -50,26 +50,33 @@
     </view>
   </view>
   <view class="chooseSpf section">
-    <navigator class="button orderImme" url="/pages/site/chooseSpf">选择 规格</navigator>
+    <navigator class="zan-cell zan-cell--access orderImme" url="/pages/site/chooseSpf?id={{site.siteId}}">
+      <view class="zan-cell__bd">选择 规格</view>
+      <view class="zan-cell__ft">{{specf?'时间:' + specf.date + ' 大小:' + specf.stallSize : ''}}</view>
+    </navigator>
   </view>
-  <view class="wa-grid-99 section">
-    <button class="mini-btn" type="primary" size="mini">发票8%</button>
-    <button class="mini-btn" disabled="true" size="mini">供电</button>
-    <button class="mini-btn" disabled="true" size="mini">提供座椅</button>
-    <button class="mini-btn" type="primary" disabled="true" size="mini">物料过夜</button>
-    <button class="mini-btn" disabled="true" size="mini">能发宣传页</button>
+  <view class="wa-grid section">
+    <button class="mini-btn" type="primary" size="mini" wx:for="{{site.services}}" wx:key="unique">{{item}}</button>
   </view>
-  <view class="section">
-    <view class="wa-grid-99 detailTitle">社区信息：</view>
-    <view class="wa-grid-50">年份：2010 </view>
-    <view class="wa-grid-50">物业费： 24</view>
-    <view class="wa-grid-50">房价：- </view>
-    <view class="wa-grid-50">户 数： -</view>
-    <view class="wa-grid-50">入住率：-</view>
+  <view class="wa-grid section">
+    <view class="detailTitle">社区信息：</view>
+    <view class="wa-grid-50">年份：{{community.year}} </view>
+    <view class="wa-grid-50">物业费： {{community.propertyFee}}</view>
+    <view class="wa-grid-50">房价：{{community.housingPrice > 0 ? community.housingPrice : '-'}} </view>
+    <view class="wa-grid-50">户 数： {{community.households > 0 ? community.households : '-'}}</view>
+    <view class="wa-grid-50">入住率：{{community.occupancyRate ? community.occupancyRate : '-'}}</view>
   </view>
-  <view class="section">
-    <view class="detailTitle">摆摊时间：08:00--17:00 </view>
-    <view>人流量：3000</view>
+  <view class="zan-panel section">
+    <view>人流量： {{site.flowrate}}</view>
+    <view>消费水平： {{site.consumption}}</view>
+    <view>摆摊时间： {{site.stallTimeStart}} -- {{site.stallTimeEnd}} </view>
+    <view>摆摊位置： {{site.stallPosition}}</view>
+    <view>摆摊大小： {{site.stallSize}}</view>
+    <view>总面积： {{site.totalArea}}(m²)</view>
+    <view>禁摆品类： {{site.prohibiteGoods}}</view>
+    <view>物业要求： {{site.propertyReq}}</view>
+    <view>配套设施： {{site.supportingFacilities}}</view>
+    <view>场地详情： {{site.siteDetails}}</view>
   </view>
 
   <view class="comments section">
@@ -99,6 +106,5 @@
   <view class="button service" bindtap="customService">客服</view>
   <view class="button cart" bindtap="goToCart">购物车</view>
   <view class="button addCart" bindtap="addToCart">加入购物车</view>
-  <navigator class="button orderImme" url="/pages/order/order?id={{id}}">立即下单
-  </navigator>
+  <view class="button orderImme" bindtap="orderImme">立即下单</view>
 </view>

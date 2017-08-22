@@ -7,6 +7,11 @@
 
 //var host = "14592619.qcloud.la"
 var host = "http://localhost:8080/BSManageAdmin/api/wx"
+var imgHost = "http://localhost:8081/bsImg/"
+
+//product version
+//var host = "https://www.qvisionadmin.cn/BSManageAdmin/api/wx"
+//var imgHost = "https://www.qvisionadmin.cn/bsImg/"
 
 var config = {
 
@@ -22,11 +27,13 @@ var config = {
   // 生成支付订单的接口
   paymentUrl: `${host}/payment/requestpay`,
 
+  paymentFinishUrl: `${host}/payment/finish`,
+
   getSitesUrl: `${host}/getSites`,
 
   getSiteUrl: `${host}/site/get`,
 
-  imgUrl: `http://localhost:8081/bsImg/`
+  imgUrl: `${imgHost}`
 
 };
 

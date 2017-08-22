@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="page-body">
+    <view class="page-section">
+      <form catchsubmit="submitForm" report-submit="true">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">账号</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="text" disabled="{{false}}" value="{{formData.account}}" name="account"></input>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">密码</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="password" password="true" disabled="{{false}}" value="{{formData.password}}" name="password"></input>
+            </view>
+          </view>
+        </view>
+        <view class="btn-area">
+          <button type="primary" size="40" formType="submit" loading="{{loading}}">登录</button>
+        <view class="forget_password">忘记密码？</view>
+        </view>
+      </form>
+    </view>
+    <view class="page-section">
+      <view class="btn-area">
+        <button type="default" size="40" loading="{{loading}}">手机号注册</button>
+        <button type="default" size="40"  loading="{{loading}}">手机号直接登录</button>
+        <button type="default" size="40"  loading="{{loading}}">微信直接登录</button>
+      </view>
+    </view>
+  </view>
+</view>

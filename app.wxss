@@ -4,6 +4,7 @@
 @import 'assets/styles/skyvow.wxss';
 @import 'assets/styles/wa-ui.wxss';
 @import 'assets/styles/zan-ui.wxss';
+@import 'assets/styles/color.wxss';
 
 .container {
   height: 100%;

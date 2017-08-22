@@ -1,0 +1,34 @@
+/* contacts.wxss */
+
+.page-body .zan-card{
+  margin: 5rpx;
+  border:1rpx solid #ddd;
+}
+
+.zan-card image {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: -6rpx;
+}
+
+.zan-card .zan-card__right-col{
+  padding:0 5rpx;
+}
+
+.set_default {
+  flex: 1;
+  background-color: #4cb0f9;
+  color: white;
+}
+
+.choose_contact {
+  flex: 2;
+  background-color: #b9e563;
+  color: white;
+}
+
+.addContact {
+  flex: 2;
+  background-color: #fec04e;
+  color: white;
+}

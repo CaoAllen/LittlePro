@@ -36,10 +36,7 @@
           <text class="v" wx:if="{{sortDirection=='ASC'}}">↑</text>
           <text class="v" wx:if="{{sortDirection=='DESC'}}">↓</text>
         </view>
-        <navigator class="filter" url="/pages/search/search">
-          <view data-id="search" bindtap="tapFilter">筛选
-          </view>
-        </navigator>
+        <navigator class="filter" url="/pages/search/search">筛选</navigator>
       </view>
       <scroll-view scroll-y="true">
         <view class="shop" wx:for="{{sites}}" wx:key="id">

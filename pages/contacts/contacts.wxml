@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="page-body">
+    <view class="zan-card">
+      <view class="zan-card__detail-row">
+        <view class="zan-card__right-col">姓名：test</view>
+        <view class="zan-card__left-col zan-ellipsis--l2">电话：13838383838</view>
+      </view>
+      <view class="zan-card__detail-row">
+        <view class="zan-card__left-col zan-ellipsis--l2">地址：惺惺惜惺惺惺惺惜惺惺xxxx</view>
+      </view>
+      <view class="zan-card__detail-row">
+        <view class="zan-card__right-col" bindtap="editContact">
+          <image src="../../images/icon_24.png" mode="aspectFit"></image>
+          <text>删除</text>
+        </view>
+        <view class="zan-card__right-col" bindtap="delContact">
+          <image src="../../images/icon_24.png" mode="aspectFit"></image>
+          <text>编辑</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="carts-footer">
+    <view class="button set_default" bindtap="setDefault" loading="{{loading}}">设置默认</view>
+    <view class="button choose_contact" bindtap="chooseContact" loading="{{loading}}">选择</view>
+    <view class="button addContact" bindtap="addContact" loading="{{loading}}">新增</view>
+  </view>
+</view>

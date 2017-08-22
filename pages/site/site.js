@@ -28,6 +28,19 @@ Page({
       self.setData({
         id: options.id
       });
+      if (options.stallSize && options.timeUnit && options.date){
+        self.setData({
+          specf:{
+            stallSize: options.stallSize,
+            timeUnit: options.timeUnit,
+            date: options.date
+          }
+        })
+      }else{
+        self.setData({
+          specf: undefined
+        })
+      }
       wx.request({
         url: getSiteUrl,
         method: 'POST',
@@ -45,6 +58,8 @@ Page({
           }
           var address = res.data.address;
           var fullAddress = address.city + address.district + address.addressDetail;
+          //TODO
+          res.data.site.services = ['供电','发票'];
           self.setData({
             pictures: pictures,
             site:res.data.site,
@@ -56,55 +71,6 @@ Page({
         }
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
   showMap: function(){
     var self = this;
@@ -148,18 +114,50 @@ Page({
     });
   },
   addToCart: function () {
-    var cart = wx.getStorageSync('cart') || [];
-    console.dir(cart);
-    cart.push({
-      cartId: cart.length,
-      imgUrl: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/shops/logo_4.jpg',
-      price: 1500,
-      name: '上海凯迪克大厦',
-      count: 1
-    });
-    wx.setStorageSync('cart', cart);
-    wx.showToast({
-      title: "添加成功！"
-    });
+    var self = this;
+    var d = self.data;
+    if (!d.specf) {
+      wx.navigateTo({
+        url: '/pages/site/chooseSpf?id=' + d.site.siteId,
+      })
+    }else{
+      var cart = wx.getStorageSync('cart') || [];
+      if (cart.length >= 20){
+        wx.showModal({
+          title: "提示",
+          content: "购物车太多啦，请先结算在下单哦！",
+          showCancel: false,
+          confirmText: "确定"
+        });
+        return;
+      }
+      cart.push({
+        cartId: cart.length,
+        siteId: d.site.siteId,
+        imgUrl: d.pictures[0].img,
+        price: d.prices[0].amount,
+        name: d.site.name,
+        specf:d.specf,
+        count: 1
+      });
+      console.dir(cart);
+      wx.setStorageSync('cart', cart);
+      wx.showToast({
+        title: "添加成功！"
+      });
+    }
+  },
+  orderImme: function () {
+    var d = this.data;
+    if (d.specf){
+      wx.navigateTo({
+        url: '/pages/order/order?id=' + d.site.siteId + '&stallSize=' + d.specf.stallSize +
+        '&timeUnit=' + d.specf.timeUnit + "&date=" + d.specf.date
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/site/chooseSpf?id=' + d.site.siteId,
+      })
+    }
   }
 })

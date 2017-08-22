@@ -1,4 +1,12 @@
-function formatTime(date) {
+function formatDate(date, joinSymbol) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join(getSymbol(joinSymbol))
+}
+
+function formatFullTime(date, joinSymbol) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
   var day = date.getDate()
@@ -7,8 +15,14 @@ function formatTime(date) {
   var minute = date.getMinutes()
   var second = date.getSeconds()
 
+  return [year, month, day].map(formatNumber).join(getSymbol(joinSymbol)) + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+function getSymbol(joinSymbol){
+  if (joinSymbol && ['/', ':', '-'].indexOf(joinSymbol) > -1) {
+    return joinSymbol;
+  }
+  return '/';
 }
 
 function formatNumber(n) {
@@ -16,6 +30,38 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function formatTime(time) {
+  if (typeof time !== 'number' || time < 0) {
+    return time
+  }
+
+  var hour = parseInt(time / 3600)
+  time = time % 3600
+  var minute = parseInt(time / 60)
+  time = time % 60
+  var second = time
+
+  return ([hour, minute, second]).map(formatNumber).join(':')
+}
+
+function formatLocation(longitude, latitude) {
+  if (typeof longitude === 'string' && typeof latitude === 'string') {
+    longitude = parseFloat(longitude)
+    latitude = parseFloat(latitude)
+  }
+
+  longitude = longitude.toFixed(2)
+  latitude = latitude.toFixed(2)
+
+  return {
+    longitude: longitude.toString().split('.'),
+    latitude: latitude.toString().split('.')
+  }
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatDate: formatDate,
+  formatFullTime: formatFullTime,
+  formatTime: formatTime,
+  formatLocation: formatLocation
 }

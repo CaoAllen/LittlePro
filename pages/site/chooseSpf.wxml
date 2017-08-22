@@ -5,8 +5,8 @@
       <view class="weui-label">当前选择</view>
     </view>
     <view class="weui-cell__bd">
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-        <view class="weui-input">{{array[index]}}</view>
+      <picker bindchange="bindStallSizeChange" value="{{stallSizeIndex}}" range="{{stallSizeArray}}">
+        <view class="weui-input">{{stallSizeArray[stallSizeIndex]}}</view>
       </picker>
     </view>
   </view>
@@ -19,8 +19,8 @@
       <view class="weui-label">当前选择</view>
     </view>
     <view class="weui-cell__bd">
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-        <view class="weui-input">{{array[index]}}</view>
+      <picker bindchange="bindTimeUnitChange" value="{{timeUnitIndex}}" range="{{timeUnitArray}}">
+        <view class="weui-input">{{timeUnitArray[timeUnitIndex]}}</view>
       </picker>
     </view>
   </view>
@@ -33,7 +33,7 @@
       <view class="weui-label">当前选择</view>
     </view>
     <view class="weui-cell__bd">
-      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+      <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
         <view class="weui-input">{{date}}</view>
       </picker>
     </view>
@@ -41,6 +41,5 @@
 </view>
 
 <view class="carts-footer">
-  <navigator bindtap="clickOk" class="button ok">确定
-  </navigator>
+  <view bindtap="clickOk" class="button ok">确定</view>
 </view>
